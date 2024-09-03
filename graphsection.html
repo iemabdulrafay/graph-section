@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Protection Services</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .main-image {
+            width: 100%;
+            height: auto;
+            transition: opacity 0.5s ease;
+            margin-left: 60px; /* Add space for the arrow */
+        }
+        .thumbnail {
+            position: absolute;
+            width: 15vw;
+            height: 15vw;
+            max-width: 80px;
+            max-height: 50px;
+            border: 2px solid red;
+            border-radius: 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .hidden {
+            display: none;
+        }
+        .back-arrow {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 40px;
+            color: red;
+            cursor: pointer;
+            z-index: 1001;
+            display: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .thumbnail {
+                width: 20vw;
+                height: 20vw;
+            }
+            .back-arrow {
+                font-size: 30px;
+                left: 5px;
+            }
+            .main-image {
+                margin-left: 50px; /* Adjust space for the arrow on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Back Arrow -->
+        <div class="back-arrow" id="backArrow" onclick="resetImage()">←</div>
+        
+        <!-- Main Image -->
+        <img src="https://multitech.sa/wp-content/uploads/2024/09/main-image-1-min-scaled.webp" alt="Fire Protection Layout" class="main-image" id="mainImage">
+        
+        <!-- Thumbnails -->
+        <img src="https://multitech.sa/wp-content/uploads/2024/09/clean-agent_vvi3b7.webp" alt="Clean Agent" class="thumbnail" style="top: 10%; left: 10%;" onclick="expandImage('https://multitech.sa/wp-content/uploads/2024/09/fire-pump-min-scaled.webp')">
+        <img src="https://multitech.sa/wp-content/uploads/2024/09/fire-extinguisher_rywqba.webp" alt="Fire Extinguisher" class="thumbnail" style="top: 3%; left: 55%;" onclick="expandImage('https://multitech.sa/wp-content/uploads/2024/09/fire-extinguisher-min-scaled.webp')">
+        <img src="https://multitech.sa/wp-content/uploads/2024/09/standpipe_iunwdl.webp" alt="Standpipe" class="thumbnail" style="top: 10%; left: 70%;" onclick="expandImage('https://multitech.sa/wp-content/uploads/2024/09/standpipe-min-scaled.webp')">
+        <img src="https://multitech.sa/wp-content/uploads/2024/09/kitchen-suppresion.webp" alt="kitchen suppresion" class="thumbnail" style="top: 20%; left: 90%;" onclick="expandImage('https://multitech.sa/wp-content/uploads/2024/09/kitchen-suppression-min-scaled.webp')">
+        <img src="https://multitech.sa/wp-content/uploads/2024/09/deluge_azbxel.webp" alt="deluge azbxel" class="thumbnail" style="top: 68%; left: 93%;" onclick="expandImage('https://multitech.sa/wp-content/uploads/2024/09/mtc-scaled.webp')">
+        <img src="https://multitech.sa/wp-content/uploads/2024/09/fire-hydrant_xhkvn5.webp" alt="fire hydrant" class="thumbnail" style="top: 80%; left: 80%;" onclick="expandImage('https://multitech.sa/wp-content/uploads/2024/09/standpipe-1-scaled.webp')">
+        <img src="https://multitech.sa/wp-content/uploads/2024/09/fire-sprinkler_ljmhp9.webp" alt="fire sprinkler" class="thumbnail" style="top: 80%; left: 50%;" onclick="expandImage('https://multitech.sa/wp-content/uploads/2024/09/fire-sprinkler-1-min-scaled.webp')">
+        <img src="https://multitech.sa/wp-content/uploads/2024/09/fire-alarm_jhhdnf.webp" alt="fire alarm" class="thumbnail" style="top: 75%; left: 35%;" onclick="expandImage('https://multitech.sa/wp-content/uploads/2024/09/fire-alarm-min-scaled.webp')">
+        <img src="https://multitech.sa/wp-content/uploads/2024/09/fire-pump_xnerba.webp" alt="fire pump" class="thumbnail" style="top: 65%; left: 20%;" onclick="expandImage('https://multitech.sa/wp-content/uploads/2024/09/fire-pump-1-min-scaled.webp')">
+
+
+
+    </div>
+    
+
+    <script>
+        let mainImage = document.getElementById('mainImage');
+        let thumbnails = document.querySelectorAll('.thumbnail');
+        let originalImageSrc = mainImage.src; // Save the original main image source
+
+        // Function to replace the main image with the expanded image and hide thumbnails
+        function expandImage(imagePath) {
+            mainImage.src = imagePath; // Replace main image source
+            thumbnails.forEach(function(thumb) {
+                thumb.classList.add('hidden'); // Hide all thumbnails
+            });
+            document.getElementById('backArrow').style.display = 'block'; // Show the back arrow
+        }
+
+        // Function to reset the image and show thumbnails
+        function resetImage() {
+            mainImage.src = originalImageSrc; // Reset to the original main image
+            thumbnails.forEach(function(thumb) {
+                thumb.classList.remove('hidden'); // Show all thumbnails
+            });
+            document.getElementById('backArrow').style.display = 'none'; // Hide the back arrow
+        }
+    </script>
+</body>
+</html>
